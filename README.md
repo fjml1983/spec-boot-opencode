@@ -4,7 +4,7 @@
 
 Boot OpenSpec's Spec-Driven in any project and give superpowers to any coding agent.
 
-This repository contains a comprehensive set of development rules, standards, and AI agent configurations designed for an opencode-first workflow. The setup is portable and can be imported into any project to provide consistent, high-quality AI-assisted development with low infrastructure cost.
+This repository contains a comprehensive set of development rules, standards, and OpenCode agent configurations designed for an OpenCode-first workflow. The setup is portable and can be imported into any project to provide consistent, high-quality OpenCode-assisted development with low infrastructure cost.
 
 It's highly recommended to be used along with Spec-Driven Development frameworks like [OpenSpec](https://github.com/Fission-AI/OpenSpec)
 
@@ -24,26 +24,26 @@ It's highly recommended to be used along with Spec-Driven Development frameworks
 │   ├── agents/                  # Agent role definitions (backend, frontend, analyst, etc.)
 │   └── skills/                  # Reusable skill prompts/workflows
 │
-├── AGENTS.md                    # Primary, vendor-neutral agent entrypoint
+├── AGENTS.md                    # Primary OpenCode agent entrypoint
 └── README.md                    # Setup and workflow guide
 ```
 
 ## 🤖 OpenCode-First Support
 
-This repository is designed to run primarily with **opencode** as the coding copilot.
+This repository is designed to run with **OpenCode** as the coding agent.
 
 - **`AGENTS.md`** is the single entrypoint for agent behavior
 - **`docs/base-standards.md`** is the single source of truth for engineering rules
 - **`ai-specs/`** contains reusable agents and skills, independent from paid integrations
 
-Agent-specific files and symlinks are optional compatibility extras, not a requirement for setup.
+The OpenCode baseline works directly from this structure without extra compatibility layers.
 
 ### Why This Approach?
 
 ✅ **Single Source of Truth**: Core rules maintained in one place (`base-standards.md`)  
-✅ **OpenCode First**: Works out-of-the-box with a vendor-neutral setup  
+✅ **OpenCode First**: Works out-of-the-box with an OpenCode-only baseline  
 ✅ **Zero Configuration**: Import into a new project and it works immediately  
-✅ **Easy Updates**: Update rules once, all copilots benefit  
+✅ **Easy Updates**: Update rules once, all OpenCode sessions benefit  
 ✅ **Portable**: Copy this structure to any project  
 
 ## 🚀 Quick Start
@@ -91,7 +91,7 @@ This copies all files into your project and recreates the symlink structure auto
 
 ### 3) Customize `docs/` for Your Project (Mandatory)
 
-This step is required. If you skip it, your AI assistant will use generic technical context instead of your real project context.
+This step is required. If you skip it, your OpenCode agent will use generic technical context instead of your real project context.
 
 Update the files in `docs/` to match your stack, architecture patterns, domain language, API contracts, and data model.
 
@@ -101,7 +101,7 @@ For detailed guidance and ready-to-use prompt examples, see [Customization](#-cu
 
 After `openspec init` and after copying this repository, update your project's `config.yml` to include your technical context from `docs`.
 
-Prompt example to automate this with your copilot:
+Prompt example to automate this with OpenCode:
 
 ```text
 Update my openspec config.yml context to reference this repository's docs and ai-specs structure.
@@ -153,7 +153,7 @@ Your coding agent should automatically load:
 
 - **OpenCode**: `AGENTS.md` → `docs/base-standards.md`
 
-Compatibility files for other copilots are optional. The baseline setup should remain functional without them.
+No additional compatibility layer is required. The baseline is OpenCode-only.
 
 ## 💡 Usage: Official OpenSpec Workflow
 
@@ -210,7 +210,7 @@ Artifacts are managed through OpenSpec directories during this flow, including t
 
 ### Useful Skills
 
-Skills live in `ai-specs/skills/`. Optional mirrors/symlinks can be used for other agent ecosystems, but they are not required for opencode-first operation. The agent loads a skill automatically when a request matches its description (per `AGENTS.md` §4). The most useful ones in day-to-day work are **`enrich-us`**, **`using-git-worktrees`**, **`writing-skills`**, and **`code-auditing`**:
+Skills live in `ai-specs/skills/`. The agent loads a skill automatically when a request matches its description (per `AGENTS.md` §4). The most useful ones in day-to-day work are **`enrich-us`**, **`using-git-worktrees`**, **`writing-skills`**, and **`code-auditing`**:
 
 - **`enrich-us`** — Analyze and enhance a vague Jira user story (or raw idea) into an implementation-ready ticket with acceptance criteria, technical detail, and edge cases. Use **before** planning to make sure the team and the AI agree on scope.
 - **`using-git-worktrees`** — Set up an isolated workspace before starting feature work or executing a plan, with safe creation, baseline checks, optional local settings sync, and a complete cleanup workflow when the work is done.
@@ -255,7 +255,7 @@ All development follows principles defined in `docs/base-standards.md`:
 
 ### For Developers
 
-- ✅ **Consistent Code Quality**: AI follows the same standards every time
+- ✅ **Consistent Code Quality**: OpenCode follows the same standards every time
 - ✅ **Comprehensive Testing**: Automatic 90%+ coverage across all layers
 - ✅ **Complete Documentation**: API specs updated automatically
 - ✅ **Faster Onboarding**: New team members reference the same rules
@@ -263,7 +263,7 @@ All development follows principles defined in `docs/base-standards.md`:
 
 ### For Teams
 
-- ✅ **Copilot Flexibility**: Team members can use their preferred AI tool
+- ✅ **OpenCode Consistency**: Team members follow a single OpenCode workflow
 - ✅ **Knowledge Preservation**: Standards documented, not in people's heads
 - ✅ **Quality Consistency**: Same standards regardless of who (or what) writes code
 - ✅ **Easier Code Reviews**: Clear expectations and patterns
@@ -290,11 +290,11 @@ All development follows principles defined in `docs/base-standards.md`:
 2. **Adapt agents in `ai-specs/agents`**: Adjust agent definitions to your project's roles and workflows
 3. **Extend skills in `ai-specs/skills`**: Define battle-tested prompts and workflows in reusable skills
 4. **Link resources**: Prefer local markdown/project docs first. Add MCP resources only when needed
-5. **Optional compatibility symlinks**: If your team uses additional agent ecosystems, you can add mirrors/symlinks as a compatibility layer
+5. **Optional local symlink mirrors**: Use symlinks only when you need local path ergonomics for OpenCode workflows
 
 ### Prompt Example: Adapt Technical Context
 
-Use this prompt with your copilot to adapt the `docs/` folder while preserving the same baseline structure:
+Use this prompt with OpenCode to adapt the `docs/` folder while preserving the same baseline structure:
 
 ```text
 Following the same base structure already present in docs/, update all technical context documents according to this project's specifics.
@@ -305,7 +305,7 @@ Requirements:
 - Update backend, frontend, and documentation standards to reflect actual practices used by this team.
 - Update docs/api-spec.yml and docs/data-model.md so they match the real endpoints and entities of this project.
 - Ensure all references are internally consistent and aligned across docs/.
-- Keep everything in English and make guidance implementation-ready for AI agents.
+- Keep everything in English and make guidance implementation-ready for OpenCode agents.
 ```
 
 ### Maintaining Standards
@@ -315,7 +315,7 @@ Requirements:
 - **Team Review**: Standards changes should be reviewed like pull requests
 - **Documentation**: Keep examples current with actual implementation
 - **Symlink Integrity**: After file renames/moves/suffix changes, verify and update all impacted symlinks
-- **Canonical Placement**: Prefer `ai-specs` as canonical source and expose through optional mirror symlinks only when another agent ecosystem requires it
+- **Canonical Placement**: Prefer `ai-specs` as canonical source and expose through optional mirror symlinks only when your local OpenCode setup needs it
 
 ## 📚 Technical context
 
@@ -335,7 +335,7 @@ The following files are included as **reference examples** from the LIDR project
 When contributing to the standards:
 
 1. Update `base-standards.md` (single source of truth)
-2. Test with opencode and your chosen local toolchain to ensure compatibility
+2. Test with OpenCode and your chosen local toolchain to ensure consistent behavior
 3. Update generated examples in `changes/` if needed
 4. Document breaking changes clearly
 5. Follow the same standards you're defining!

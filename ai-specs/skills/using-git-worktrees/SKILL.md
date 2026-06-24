@@ -125,9 +125,9 @@ Run **after** `cd "$path"` (still using `SOURCE_ROOT` captured above):
 
 ```bash
 copied_agent_settings=false
-for agent_settings in ".agents/settings.json" ".agents/settings.local.json"; do
+for agent_settings in ".opencode/settings.json" ".opencode/settings.local.json"; do
     if [ -f "$SOURCE_ROOT/$agent_settings" ]; then
-        mkdir -p ".agents"
+        mkdir -p ".opencode"
         cp -p "$SOURCE_ROOT/$agent_settings" "./$agent_settings"
         echo "Copied $agent_settings to worktree"
         copied_agent_settings=true
@@ -135,7 +135,7 @@ for agent_settings in ".agents/settings.json" ".agents/settings.local.json"; do
 done
 
 if [ "$copied_agent_settings" = false ]; then
-    echo "No local agent settings found (.agents/settings.json or .agents/settings.local.json)"
+    echo "No local agent settings found (.opencode/settings.json or .opencode/settings.local.json)"
 fi
 ```
 
@@ -280,8 +280,8 @@ Main checkout left untouched
 | Native cleanup tool available | Use it (Step 5.2) |
 | No native cleanup tool | `git worktree remove` (Step 5.3) |
 | Worktree directory deleted manually | `git worktree prune` |
-| Git fallback: clone agent behavior into worktree | Copy `.agents/settings*.json` from `SOURCE_ROOT` (Step 1b) |
-| Repo uses `.claude` symlinks | Copy JSON only is not enough—recreate symlinks or paths |
+| Git fallback: clone agent behavior into worktree | Copy `.opencode/settings*.json` from `SOURCE_ROOT` (Step 1b) |
+| Repo uses `.opencode` symlinks | Copy JSON only is not enough—recreate symlinks or paths |
 
 ## Common Mistakes
 
@@ -353,4 +353,4 @@ Main checkout left untouched
 - Run Step 5 cleanup once the work is done, using the same mechanism that created the worktree
 - Verify there is nothing to lose before removing a worktree (`git status --porcelain`, `git log @{u}..`)
 - Confirm with `git worktree list` and a directory check that cleanup actually completed
-- After Step 1b (git fallback), copy `.agents/settings.json` and `.agents/settings.local.json` from `SOURCE_ROOT` captured before `git worktree add`
+- After Step 1b (git fallback), copy `.opencode/settings.json` and `.opencode/settings.local.json` from `SOURCE_ROOT` captured before `git worktree add`

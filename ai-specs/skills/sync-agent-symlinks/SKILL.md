@@ -14,8 +14,7 @@ Use this skill after any change in `ai-specs/skills` (new skill, removed skill, 
 ## Scope and Safety Rules
 
 - Canonical source is `ai-specs/skills`.
-- Mirror targets are optional and vendor-neutral. Default discovery order:
-   - `.agents/skills`
+- Mirror target is OpenCode-only by default:
    - `.opencode/skills`
    - Any additional mirror paths explicitly provided by the user
 - Manage only entries that are symlinks to `../../ai-specs/skills/<skill-name>`.
@@ -66,7 +65,7 @@ Never remove:
 
 After changes:
 
-- Confirm every canonical skill exists in both mirrors as a valid symlink, or is explicitly listed as conflict.
+- Confirm every canonical skill exists in each configured mirror as a valid symlink, or is explicitly listed as conflict.
 - Confirm no broken canonical symlinks remain.
 - Confirm external entries remain untouched.
 
@@ -106,15 +105,12 @@ Use equivalent commands for your environment:
 ls ai-specs/skills
 
 # inspect mirror entries with link metadata
-ls -la .agents/skills
 ls -la .opencode/skills
 
 # add canonical link
-ln -s ../../ai-specs/skills/<skill-name> .agents/skills/<skill-name>
 ln -s ../../ai-specs/skills/<skill-name> .opencode/skills/<skill-name>
 
 # remove orphan canonical link
-rm .agents/skills/<skill-name>
 rm .opencode/skills/<skill-name>
 ```
 

@@ -1,5 +1,5 @@
 ---
-description: This document contains all development rules and guidelines for this project, applicable to all AI agents in an opencode-first workflow.
+description: This document contains all development rules and guidelines for this project, applicable to all OpenCode agents in an OpenCode-first workflow.
 alwaysApply: true
 ---
 
